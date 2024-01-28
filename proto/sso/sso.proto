@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package feedback;
+
+option go_package = "sgn.sso.v1;ssov1";
+
+
+service Feedback {
+  rpc Suggestion (SuggestionRequest) returns (SuggestionResponse);
+  rpc Complaint (ComplaintRequest) returns (ComplaintResponse);
+  rpc SugComAnswer (AnswerRequest) returns (AnswerResponse);
+}
+
+message SuggestionRequest {
+  string SuggestionTXT = 1; //text of certain suggestion
+}
+
+message SuggestionResponse {
+  int64 sug_id = 1;  // ID of suggestion
+}
+
+message ComplaintRequest {
+  string ComplaintTXT = 1; //text of certain complaint
+}
+
+message ComplaintResponse {
+  int64 com_id = 1;  // ID of complaint
+}
+
+message AnswerRequest {
+  int64 id = 1; // TODO: Divide ID of Complaint and Suggestion
+}
+
+message AnswerResponse {
+  string AnswerTXT = 1;
+}
